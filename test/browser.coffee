@@ -19,4 +19,4 @@ exports.Browser::html = (selector) ->
 exports.Browser::enterKeyUp = (selector) ->
     @evaluate "e = jQuery.Event('keyup')"
     @evaluate "e.which = 13"
-    @evaluate "$('.jstree-rename-input').trigger(e)"
+    @evaluate "$('#{selector}').trigger(e)"
