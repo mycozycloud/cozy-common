@@ -1,23 +1,22 @@
 exports.Browser = require("zombie").Browser
 
 
-exports.Browser.prototype.isVisible = (selector) ->
+exports.Browser::isVisible = (selector) ->
     @evaluate "$('#{selector}').is(':visible')"
     
-exports.Browser.prototype.click = (selector) ->
+exports.Browser::click = (selector) ->
     @evaluate "$('#{selector}').click()"
 
-exports.Browser.prototype.hasClass = (selector, className) ->
+exports.Browser::hasClass = (selector, className) ->
     @evaluate "$('#{selector}').hasClass('#{className}')"
 
-exports.Browser.prototype.keyUp = (selector) ->
+exports.Browser::keyUp = (selector) ->
     @evaluate "$('#{selector}').keyup()"
 
-exports.Browser.prototype.html = (selector) ->
+exports.Browser::html = (selector) ->
     @evaluate "$('#{selector}').html()"
 
-exports.Browser.prototype.enterKeyUp = (selector) ->
+exports.Browser::enterKeyUp = (selector) ->
     @evaluate "e = jQuery.Event('keyup')"
     @evaluate "e.which = 13"
     @evaluate "$('.jstree-rename-input').trigger(e)"
-<F5>
