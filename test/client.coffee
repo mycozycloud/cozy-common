@@ -1,30 +1,33 @@
 request = require('request')
 
-host = "http://localhost:8001/"
+# Small HTTP client for easy json interactions with Cozy backends.
+class exports.Client
 
-exports.get = (path, callback) ->
-    request
-        method: "GET"
-        uri: host + path
-        , callback
+    constructor: (@host) ->
 
-exports.post = (path, json, callback) ->
-    request
-        method: "POST"
-        uri: host + path
-        json: json
-        , callback
+    get: (path, callback) ->
+        request
+            method: "GET"
+            uri: @host + path
+            , callback
 
-exports.put = (path, json, callback) ->
-    request
-        method: "PUT"
-        uri: host + path
-        json: json
-        , callback
+    post: (path, json, callback) ->
+        request
+            method: "POST"
+            uri: @host + path
+            json: json
+            , callback
 
-exports.delete = (path, callback) ->
-    request
-        method: "DELETE"
-        uri: host + path
-        , callback
+    put: (path, json, callback) ->
+        request
+            method: "PUT"
+            uri: @host + path
+            json: json
+            , callback
+
+    delete: (path, callback) ->
+        request
+            method: "DELETE"
+            uri: @host + path
+            , callback
 
