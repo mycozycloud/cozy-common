@@ -5,7 +5,7 @@ exports.Browser::isVisible = (selector) ->
     @evaluate "$('#{selector}').is(':visible')"
     
 exports.Browser::length = (selector) ->
-    @evaluate "$('#{selector}').length()"
+    @evaluate "$('#{selector}').length"
 
 exports.Browser::click = (selector) ->
     @evaluate "$('#{selector}').click()"
