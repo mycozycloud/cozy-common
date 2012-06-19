@@ -16,8 +16,11 @@ exports.Browser::hasClass = (selector, className) ->
 exports.Browser::keyUp = (selector) ->
     @evaluate "$('#{selector}').keyup()"
 
-exports.Browser::html = (selector) ->
-    @evaluate "$('#{selector}').html()"
+exports.Browser::html = (selector, value) ->
+    if value?
+        @evaluate "$('#{selector}').html('#{value}')"
+    else
+        @evaluate "$('#{selector}').html()"
 
 exports.Browser::enterKeyUp = (selector) ->
     @evaluate "e = jQuery.Event('keyup')"
