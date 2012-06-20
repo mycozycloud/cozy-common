@@ -27,5 +27,11 @@ exports.Browser::enterKeyUp = (selector) ->
     @evaluate "e.which = 13"
     @evaluate "$('#{selector}').trigger(e)"
 
+exports.Browser::keyup = (selector, keyCode) ->
+    @evaluate "e = jQuery.Event('keyup')"
+    @evaluate "e.which = #{keyCode}"
+    @evaluate "$('#{selector}').trigger(e)"
+
 exports.Browser::val = (selector) ->
     @evaluate "$('#{selector}').val()"
+
