@@ -31,7 +31,9 @@ exports.Browser::keyup = (selector, keyCode, ctrlKey) ->
     @evaluate "e = jQuery.Event('keyup')"
     @evaluate "e.which = #{keyCode}"
     if ctrlKey?
-        @evaluate "e.ctrlKey = true"
+        @evaluate "e.ctrlKey = #{ctrlKey}"
+    else
+        @evaluate "e.ctrlKey = false"
     @evaluate "$('#{selector}').trigger(e)"
 
 exports.Browser::val = (selector) ->
