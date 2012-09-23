@@ -36,7 +36,7 @@ class exports.DataTree
             @root._parent = null
             @_initWalk(@root)
         else
-            @root = 
+            @root =
                     _parent  : null
                     _id      : 'tree-node-all'
                     children : []
@@ -134,25 +134,24 @@ class exports.DataTree
     #     nodeid : a reference to a node or the id of a node.
     ###
     getPaths: (node) ->
-        if typeof node == "string"
-            node = @nodes[node]
+        node = @nodes[node] if typeof(node) == "string"
+        path = @getPath(node)
+        list = [ { id: node._id, path: path } ]
         
-        p    = @getPath(node)
-        list = [ {id:node._id,path:p} ]
-        
-        @_addChildrenPaths(node, p.slice(), list)
+        @_addChildrenPaths(node, path, list)
 
         return list
 
-    _addChildrenPaths: (node, nodePath, list) ->
-        # console.log "_addChildrenPaths"
-        for c in node.children
-            nodePath.push(c.data)
-            data = 
-                id:c._id
-                path:nodePath
-            list.push data
-            @_addChildrenPaths(c,nodePath.slice(),list)
+    _addChildrenPaths: (parent, parentPath, list) ->
+        for child in parent.children
+            
+            path = parentPath.slice()
+            path.push child.data
+            list.push
+                id: child._id
+                path: path
+
+            @_addChildrenPaths(child, path, list)
 
 
     ###*
