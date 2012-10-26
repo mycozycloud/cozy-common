@@ -1,6 +1,6 @@
 # Description
 
-Cozy lib provides some helpers to build Cozy application faster.
+Cozy Common provides some helpers to build Cozy application faster.
 
 # About Cozy
 
